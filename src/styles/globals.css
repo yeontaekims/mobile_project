@@ -3,25 +3,127 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: "Beeunhye";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_01@1.0/Beeunhye.woff")
+            format("woff");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "GyeonggiBatang";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff")
+            format("woff");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "GowunDodum-Regular";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff")
+            format("woff");
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+body {
+    font-family: "GowunDodum-Regular";
+}
+.img_cover {
+    -webkit-mask-image: linear-gradient(
+        180deg,
+        transparent,
+        rgba(0, 0, 0, 0.013) 1.1%,
+        rgba(0, 0, 0, 0.049) 2.3%,
+        rgba(0, 0, 0, 0.104) 3.58%,
+        rgba(0, 0, 0, 0.175) 4.94%,
+        rgba(0, 0, 0, 0.259) 6.34%,
+        rgba(0, 0, 0, 0.352) 7.78%,
+        rgba(0, 0, 0, 0.45) 9.26%,
+        rgba(0, 0, 0, 0.55) 10.74%,
+        rgba(0, 0, 0, 0.648) 12.22%,
+        rgba(0, 0, 0, 0.741) 13.66%,
+        rgba(0, 0, 0, 0.825) 15.06%,
+        rgba(0, 0, 0, 0.896) 16.42%,
+        rgba(0, 0, 0, 0.951) 17.7%,
+        rgba(0, 0, 0, 0.987) 18.9%,
+        #000 20%,
+        #000 80%,
+        rgba(0, 0, 0, 0.987) 81.1%,
+        rgba(0, 0, 0, 0.951) 82.3%,
+        rgba(0, 0, 0, 0.896) 83.58%,
+        rgba(0, 0, 0, 0.825) 84.94%,
+        rgba(0, 0, 0, 0.741) 86.34%,
+        rgba(0, 0, 0, 0.648) 87.78%,
+        rgba(0, 0, 0, 0.55) 89.26%,
+        rgba(0, 0, 0, 0.45) 90.74%,
+        rgba(0, 0, 0, 0.352) 92.22%,
+        rgba(0, 0, 0, 0.259) 93.66%,
+        rgba(0, 0, 0, 0.175) 95.06%,
+        rgba(0, 0, 0, 0.104) 96.42%,
+        rgba(0, 0, 0, 0.049) 97.7%,
+        rgba(0, 0, 0, 0.013) 98.9%,
+        transparent
+    );
+    mask-image: linear-gradient(
+        180deg,
+        transparent,
+        rgba(0, 0, 0, 0.013) 1.1%,
+        rgba(0, 0, 0, 0.049) 2.3%,
+        rgba(0, 0, 0, 0.104) 3.58%,
+        rgba(0, 0, 0, 0.175) 4.94%,
+        rgba(0, 0, 0, 0.259) 6.34%,
+        rgba(0, 0, 0, 0.352) 7.78%,
+        rgba(0, 0, 0, 0.45) 9.26%,
+        rgba(0, 0, 0, 0.55) 10.74%,
+        rgba(0, 0, 0, 0.648) 12.22%,
+        rgba(0, 0, 0, 0.741) 13.66%,
+        rgba(0, 0, 0, 0.825) 15.06%,
+        rgba(0, 0, 0, 0.896) 16.42%,
+        rgba(0, 0, 0, 0.951) 17.7%,
+        rgba(0, 0, 0, 0.987) 18.9%,
+        #000 20%,
+        #000 80%,
+        rgba(0, 0, 0, 0.987) 81.1%,
+        rgba(0, 0, 0, 0.951) 82.3%,
+        rgba(0, 0, 0, 0.896) 83.58%,
+        rgba(0, 0, 0, 0.825) 84.94%,
+        rgba(0, 0, 0, 0.741) 86.34%,
+        rgba(0, 0, 0, 0.648) 87.78%,
+        rgba(0, 0, 0, 0.55) 89.26%,
+        rgba(0, 0, 0, 0.45) 90.74%,
+        rgba(0, 0, 0, 0.352) 92.22%,
+        rgba(0, 0, 0, 0.259) 93.66%,
+        rgba(0, 0, 0, 0.175) 95.06%,
+        rgba(0, 0, 0, 0.104) 96.42%,
+        rgba(0, 0, 0, 0.049) 97.7%,
+        rgba(0, 0, 0, 0.013) 98.9%,
+        transparent
+    );
 }
