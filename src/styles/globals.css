@@ -54,7 +54,7 @@ body {
 
 body {
     font-family: "GowunDodum-Regular";
-    background-color: #fffaf0;
+    /* background-color: #fffaf0; */
 }
 .img_cover {
     -webkit-mask-image: linear-gradient(
@@ -127,4 +127,48 @@ body {
         rgba(0, 0, 0, 0.013) 98.9%,
         transparent
     );
+}
+body {
+    color: #fff;
+    background: radial-gradient(
+        200% 100% at bottom center,
+        #f7f7b6,
+        #e96f92,
+        #75517d,
+        #1b2947
+    );
+    background: radial-gradient(
+        220% 105% at top center,
+        #1b2947 10%,
+        #75517d 40%,
+        #e96f92 65%,
+        #f7f7b6
+    );
+    background-attachment: fixed;
+    overflow: hidden;
+}
+@keyframes fall-sway {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(20px, 50vh);
+    }
+    100% {
+        transform: translate(-20px, 100vh);
+    }
+}
+/* .snow-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #001f3f;
+} */
+.snow {
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    border-radius: 50%;
+    animation: fall-sway linear infinite;
 }

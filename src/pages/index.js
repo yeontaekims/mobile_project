@@ -2,12 +2,14 @@ import { useState } from "react";
 import Image from "next/image";
 import localFont from "next/font/local";
 import ModalBack from "@/components/ModalBack";
+import SnowAnimation from "@/components/Snows";
 import Image_1 from "../images/image_1.jpg";
 import tw, { styled } from "twin.macro";
 
 import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 
 const Wrapper = styled.div`
+    ${tw`h-[100vh] overflow-scroll`}
     .contents_title {
         ${tw`text-16pxr xs:text-18pxr`}
     }
@@ -22,8 +24,11 @@ const Wrapper = styled.div`
 export default function Home() {
     const [callImageUp, setCallImageUp] = useState(false);
     const [modalState, setModalState] = useState(null);
+
     return (
         <Wrapper>
+            <SnowAnimation />
+
             <div className="max-w-[450px] mx-auto pb-80pxr">
                 <div className="pt-48pxr pb-30pxr flex flex-col items-center">
                     <span className="text-30pxr">
@@ -75,7 +80,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="mb-[13.34%]">
-                    <div className="px-[7.34%]">
+                    <div className="px-[7.34%] relative overflow-hidden">
                         <Image
                             className={`w-full  aspect-[3/2] object-cover rounded-xl duration-500`}
                             src={Image_1}
@@ -84,6 +89,53 @@ export default function Home() {
                             height={2789}
                             priority
                         />
+                        <div className="absolute bottom-40pxr   w-full ">
+                            <svg
+                                className="waves"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlnsXlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 24 150 28"
+                                preserveAspectRatio="none"
+                                shapeRendering="auto"
+                            >
+                                <defs>
+                                    <path
+                                        id="gentle-wave"
+                                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                                    />
+                                </defs>
+                                <g className="parallax">
+                                    <use
+                                        className="u-1"
+                                        xlinkHref="#gentle-wave"
+                                        x={48}
+                                        y={0}
+                                        fill="rgba(250,250,250,0.7)"
+                                    />
+                                    <use
+                                        className="u-2"
+                                        xlinkHref="#gentle-wave"
+                                        x={48}
+                                        y={3}
+                                        fill="rgba(250,250,250,0.5)"
+                                    />
+                                    <use
+                                        className="u-3"
+                                        xlinkHref="#gentle-wave"
+                                        x={48}
+                                        y={5}
+                                        fill="rgba(250,250,250,0.3)"
+                                    />
+                                    <use
+                                        className="u-4"
+                                        xlinkHref="#gentle-wave"
+                                        x={48}
+                                        y={7}
+                                        fill="rgba(250,250,250,0.2)"
+                                    />
+                                </g>
+                            </svg>
+                        </div>
                     </div>
 
                     <div className="flex flex-col justify-center items-center contents_text mt-[4.44%]">
