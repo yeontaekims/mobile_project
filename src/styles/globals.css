@@ -54,6 +54,7 @@ body {
 
 body {
     font-family: "GowunDodum-Regular";
+    background-color: #fffaf0;
 }
 .img_cover {
     -webkit-mask-image: linear-gradient(

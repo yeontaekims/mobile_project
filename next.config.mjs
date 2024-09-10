@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    domains: ["images.theirmood.com"],
-  },
-};
+import withTwin from "./withTwin.mjs";
+const nextConfig = withTwin({
+    // withTwin 적용
+    reactStrictMode: true,
+
+    images: {
+        domains: ["images.theirmood.com"],
+    },
+});
 
 export default nextConfig;

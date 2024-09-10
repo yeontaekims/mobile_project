@@ -1,109 +1,43 @@
 import { useState } from "react";
-
 import Image from "next/image";
 import localFont from "next/font/local";
-
+import ModalBack from "@/components/ModalBack";
 import Image_1 from "../images/image_1.jpg";
+import tw, { styled } from "twin.macro";
+
 import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
+
+const Wrapper = styled.div`
+    .contents_title {
+        ${tw`text-16pxr xs:text-18pxr`}
+    }
+    .contents_text {
+        ${tw`text-12pxr ss:text-14pxr xs:text-16pxr`}
+    }
+    .en_title {
+        ${tw`text-12pxr xs:text-13pxr`}
+    }
+`;
+
 export default function Home() {
     const [callImageUp, setCallImageUp] = useState(false);
+    const [modalState, setModalState] = useState(null);
     return (
-        <div className="max-w-[450px] mx-auto pb-80pxr">
-            <div className="pt-48pxr pb-30pxr flex flex-col items-center">
-                <span className="text-30pxr">
-                    2024
-                    <span>/</span>
-                    11
-                    <span>/</span>
-                    03
-                </span>
-                <span>SUNDAY</span>
-            </div>
-            <div className="mb-[13.34%]">
-                <Image
-                    className="dark:invert w-full img_cover"
-                    src={Image_1}
-                    alt=""
-                    width={1859}
-                    height={2789}
-                    priority
-                />
-            </div>
-            <div className="text-center p-[7.34%]">
-                <div className=" space-y-10pxr ">
-                    <div className="text-13pxr tracking-widest">INVITATION</div>
-                    <div className="text-18pxr pb-30pxr">
-                        소중한 분들을 초대합니다
-                    </div>
+        <Wrapper>
+            <div className="max-w-[450px] mx-auto pb-80pxr">
+                <div className="pt-48pxr pb-30pxr flex flex-col items-center">
+                    <span className="text-30pxr">
+                        2024
+                        <span>/</span>
+                        11
+                        <span>/</span>
+                        03
+                    </span>
+                    <span>SUNDAY</span>
                 </div>
-                <div className="space-y-[7.12%] leading-7 text-15pxr">
-                    <p>
-                        앞으로의 여정에서 같이 나아갈 한사람과
-                        <br />
-                        평생을 약속하기로 하였습니다.
-                    </p>
-                    <p>
-                        우연으로 시작한 만남이 운명이 되었고
-                        <br />
-                        서로의 가장 친한 벗이자 반려가 되어
-                        <br />
-                        믿음으로 함께 하고자 합니다.
-                    </p>
-                    <p>
-                        이 출발점에 함께 하시어
-                        <br /> 자리를 빛내어 주시면 <br />
-                        더없는 기쁨이 되겠습니다.
-                    </p>
-                </div>
-            </div>
-            <div className="mb-[13.34%]">
-                <div className="relative overflow-hidden px-[7.34%]">
-                    <div
-                        className={`absolute top-0 left-0 right-0 bottom-0 flex justify-center px-[7.34%] items-center ${
-                            callImageUp ? "" : "invisible"
-                        }`}
-                        // onClick={() => {
-                        //     setCallImageUp(!callImageUp);
-                        // }}
-                    >
-                        <div className="w-full px-[7.34%] space-y-20pxr">
-                            <div>신랑측</div>
-                            <div className="w-full flex justify-between gap-x-10pxr ">
-                                <span className="flex-1">신랑</span>
-                                <span className="flex-1 text-center">
-                                    길성재
-                                </span>
-                                <span className="flex gap-x-12pxr items-center justify-end flex-1">
-                                    <PhoneIcon width={16} height={16} />
-                                    <EnvelopeIcon width={18} height={18} />
-                                </span>
-                            </div>
-                            <div className="w-full flex justify-between gap-x-10pxr">
-                                <span className="flex-1">신랑 아버지</span>
-                                <span className="flex-1 text-center">
-                                    길성재
-                                </span>
-                                <span className="flex gap-x-12pxr items-center  justify-end flex-1">
-                                    <PhoneIcon width={16} height={16} />
-                                    <EnvelopeIcon width={18} height={18} />
-                                </span>
-                            </div>
-                            <div className="w-full flex justify-between gap-x-10pxr">
-                                <span className="flex-1">신랑 어머니</span>
-                                <span className="flex-1 text-center">
-                                    길성재
-                                </span>
-                                <span className="flex gap-x-12pxr items-center  justify-end flex-1">
-                                    <PhoneIcon width={16} height={16} />
-                                    <EnvelopeIcon width={18} height={18} />
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                <div className="mb-[13.34%]">
                     <Image
-                        className={`w-full  aspect-[3/2] object-cover rounded-xl duration-500 ${
-                            callImageUp ? "-translate-y-full" : ""
-                        }`}
+                        className="dark:invert w-full img_cover rounded-full"
                         src={Image_1}
                         alt=""
                         width={1859}
@@ -111,18 +45,241 @@ export default function Home() {
                         priority
                     />
                 </div>
-                <div className="flex justify-center  pt-[7.34%]">
-                    <button
-                        className="flex items-center justify-center gap-x-6pxr w-[180px] border border-[#e1e1e1] rounded-10pxr py-8pxr"
-                        onClick={() => {
-                            setCallImageUp(!callImageUp);
-                        }}
-                    >
-                        <PhoneIcon width={16} height={16} />
-                        <span>연락하기</span>
-                    </button>
+                <div className="text-center p-[7.34%]">
+                    <div className=" space-y-10pxr ">
+                        <div className="en_title tracking-widest">
+                            INVITATION
+                        </div>
+                        <div className="contents_title pb-30pxr">
+                            소중한 분들을 초대합니다
+                        </div>
+                    </div>
+                    <div className="space-y-[7.12%] leading-7 contents_text">
+                        <p>
+                            앞으로의 여정에서 같이 나아갈 한사람과
+                            <br />
+                            평생을 약속하기로 하였습니다.
+                        </p>
+                        <p>
+                            우연으로 시작한 만남이 운명이 되었고
+                            <br />
+                            서로의 가장 친한 벗이자 반려가 되어
+                            <br />
+                            믿음으로 함께 하고자 합니다.
+                        </p>
+                        <p>
+                            가을이 깊어지는 그 날
+                            <br /> 자리를 빛내어 주시면 <br />
+                            더없는 기쁨이 되겠습니다.
+                        </p>
+                    </div>
+                </div>
+                <div className="mb-[13.34%]">
+                    <div className="px-[7.34%]">
+                        <Image
+                            className={`w-full  aspect-[3/2] object-cover rounded-xl duration-500`}
+                            src={Image_1}
+                            alt=""
+                            width={1859}
+                            height={2789}
+                            priority
+                        />
+                    </div>
+
+                    <div className="flex flex-col justify-center items-center contents_text mt-[4.44%]">
+                        <p>
+                            <span className="font-semibold">
+                                {" "}
+                                길성재 &middot; 길성재{" "}
+                            </span>
+                            의 장남{" "}
+                            <span className="font-semibold">길성재</span>
+                        </p>
+                        <p>
+                            <span className="font-semibold">
+                                {" "}
+                                길성재 &middot; 길성재
+                            </span>{" "}
+                            의 장녀{" "}
+                            <span className="font-semibold">정수진</span>
+                        </p>
+                    </div>
+
+                    <div className="flex justify-center  pt-[7.34%]">
+                        <button
+                            className="flex items-center justify-center gap-x-6pxr w-[120px] ss:w-[140px] xs:w-[180px] border border-[#e1e1e1] rounded-10pxr    py-4pxr xs:py-8pxr contents_text"
+                            onClick={() => {
+                                setModalState("phone");
+                            }}
+                        >
+                            <PhoneIcon
+                                className="w-12pxr xs:w-16pxr h-12pxr xs:h-16pxr"
+                                width={16}
+                                height={16}
+                            />
+                            <span>연락하기</span>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+            {/* 연락하기 모달 */}
+            <ModalBack
+                action={modalState === "phone"}
+                closeHandle={setModalState}
+            >
+                <div
+                    className={`flex flex-col justify-start  items-center h-full max-w-[450px] mx-auto`}
+                >
+                    <div className="mb-[11.12%] flex flex-col justify-start items-center">
+                        <p className="contents_text">CONACT</p>
+                        <p className="contents_title">연락하기</p>
+                    </div>
+                    <div className="w-[90%] space-y-[20%] contents_text">
+                        <div className=" px-[7.34%] space-y-20pxr ">
+                            <div className="pb-10pxr border-b border-[#1a1a1a] border-dotted">
+                                신랑측
+                            </div>
+                            <div className="w-full flex justify-between gap-x-10pxr ">
+                                <span className="flex-1">신랑</span>
+                                <span className="flex-1 text-center">
+                                    길성재
+                                </span>
+                                <span className="flex gap-x-12pxr items-center justify-end flex-1">
+                                    <a href="tel:010-4872-8824">
+                                        <PhoneIcon
+                                            className="w-12pxr xs:w-16pxr h-12pxr xs:h-16pxr"
+                                            width={16}
+                                            height={16}
+                                        />
+                                    </a>
+                                    <a href="sms:010-4872-8824">
+                                        <EnvelopeIcon
+                                            className="w-14pxr xs:w-18pxr h-14pxr xs:h-18pxr"
+                                            width={18}
+                                            height={18}
+                                        />
+                                    </a>
+                                </span>
+                            </div>
+                            <div className="w-full flex justify-between gap-x-10pxr">
+                                <span className="flex-1">신랑 아버지</span>
+                                <span className="flex-1 text-center">
+                                    길성재
+                                </span>
+                                <span className="flex gap-x-12pxr items-center justify-end flex-1">
+                                    <a href="tel:010-4872-8824">
+                                        <PhoneIcon
+                                            className="w-12pxr xs:w-16pxr h-12pxr xs:h-16pxr"
+                                            width={16}
+                                            height={16}
+                                        />
+                                    </a>
+                                    <a href="sms:010-4872-8824">
+                                        <EnvelopeIcon
+                                            className="w-14pxr xs:w-18pxr h-14pxr xs:h-18pxr"
+                                            width={18}
+                                            height={18}
+                                        />
+                                    </a>
+                                </span>
+                            </div>
+                            <div className="w-full flex justify-between gap-x-10pxr">
+                                <span className="flex-1">신랑 어머니</span>
+                                <span className="flex-1 text-center">
+                                    길성재
+                                </span>
+                                <span className="flex gap-x-12pxr items-center justify-end flex-1">
+                                    <a href="tel:010-4872-8824">
+                                        <PhoneIcon
+                                            className="w-12pxr xs:w-16pxr h-12pxr xs:h-16pxr"
+                                            width={16}
+                                            height={16}
+                                        />
+                                    </a>
+                                    <a href="sms:010-4872-8824">
+                                        <EnvelopeIcon
+                                            className="w-14pxr xs:w-18pxr h-14pxr xs:h-18pxr"
+                                            width={18}
+                                            height={18}
+                                        />
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <div className=" px-[7.34%] space-y-20pxr ">
+                            <div className="pb-10pxr border-b border-[#1a1a1a] border-dotted">
+                                신부측
+                            </div>
+                            <div className="w-full flex justify-between gap-x-10pxr ">
+                                <span className="flex-1">신부</span>
+                                <span className="flex-1 text-center">
+                                    정수진
+                                </span>
+                                <span className="flex gap-x-12pxr items-center justify-end flex-1">
+                                    <a href="tel:010-4872-8824">
+                                        <PhoneIcon
+                                            className="w-12pxr xs:w-16pxr h-12pxr xs:h-16pxr"
+                                            width={16}
+                                            height={16}
+                                        />
+                                    </a>
+                                    <a href="sms:010-4872-8824">
+                                        <EnvelopeIcon
+                                            className="w-14pxr xs:w-18pxr h-14pxr xs:h-18pxr"
+                                            width={18}
+                                            height={18}
+                                        />
+                                    </a>
+                                </span>
+                            </div>
+                            <div className="w-full flex justify-between gap-x-10pxr">
+                                <span className="flex-1">신부 아버지</span>
+                                <span className="flex-1 text-center">
+                                    정수진
+                                </span>
+                                <span className="flex gap-x-12pxr items-center justify-end flex-1">
+                                    <a href="tel:010-4872-8824">
+                                        <PhoneIcon
+                                            className="w-12pxr xs:w-16pxr h-12pxr xs:h-16pxr"
+                                            width={16}
+                                            height={16}
+                                        />
+                                    </a>
+                                    <a href="sms:010-4872-8824">
+                                        <EnvelopeIcon
+                                            className="w-14pxr xs:w-18pxr h-14pxr xs:h-18pxr"
+                                            width={18}
+                                            height={18}
+                                        />
+                                    </a>
+                                </span>
+                            </div>
+                            <div className="w-full flex justify-between gap-x-10pxr">
+                                <span className="flex-1">신부 어머니</span>
+                                <span className="flex-1 text-center">
+                                    정수진
+                                </span>
+                                <span className="flex gap-x-12pxr items-center justify-end flex-1">
+                                    <a href="tel:010-4872-8824">
+                                        <PhoneIcon
+                                            className="w-12pxr xs:w-16pxr h-12pxr xs:h-16pxr"
+                                            width={16}
+                                            height={16}
+                                        />
+                                    </a>
+                                    <a href="sms:010-4872-8824">
+                                        <EnvelopeIcon
+                                            className="w-14pxr xs:w-18pxr h-14pxr xs:h-18pxr"
+                                            width={18}
+                                            height={18}
+                                        />
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ModalBack>
+        </Wrapper>
     );
 }

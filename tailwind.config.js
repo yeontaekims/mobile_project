@@ -9,6 +9,11 @@ module.exports = {
         "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
+        screens: {
+            ss: "320px",
+            xs: "370px",
+            // => @media (min-width: 370px) { ... }
+        },
         extend: {
             font: {},
             colors: {
