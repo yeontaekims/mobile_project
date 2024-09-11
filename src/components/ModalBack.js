@@ -3,7 +3,7 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 export default function ModalBack({ children, action, closeHandle }) {
     return (
         <div
-            className={`fixed top-0 left-0 right-0 bottom-0 bg-[#DCAE96] bg-opacity-70 backdrop-blur-[14px] duration-500 ${
+            className={`fixed flex flex-col overflow-scroll top-0 left-0 right-0 z-10 bottom-0 bg-[#DCAE96] bg-opacity-80 backdrop-blur-[14px] duration-500 ${
                 action ? "" : "invisible opacity-0"
             }`}
         >

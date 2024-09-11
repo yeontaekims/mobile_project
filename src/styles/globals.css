@@ -149,26 +149,29 @@ body {
 }
 @keyframes fall-sway {
     0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+/* @keyframes fall-sway {
+    0% {
         transform: translate(0, 0);
     }
     50% {
-        transform: translate(20px, 50vh);
+        transform: translate(2px, 50vh);
     }
     100% {
-        transform: translate(-20px, 100vh);
+        transform: translate(-2px, 100vh);
     }
-}
-/* .snow-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background-color: #001f3f;
 } */
+
 .snow {
     position: absolute;
     top: -10px;
-    background-color: white;
+    background-color: #f7f7b6;
     border-radius: 50%;
+    opacity: 0.8;
     animation: fall-sway linear infinite;
 }
