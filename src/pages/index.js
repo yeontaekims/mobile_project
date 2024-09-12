@@ -4,6 +4,9 @@ import localFont from "next/font/local";
 import ModalBack from "@/components/ModalBack";
 import SnowAnimation from "@/components/Snows";
 import Contact from "@/components/Contact";
+import QuestionBox from "@/components/QuestionBox";
+import GalleryGrid from "@/components/GalleryGrid";
+import SwiperSection from "@/components/SwiperSection";
 import Image_1 from "../images/image_1.jpg";
 import tw, { styled } from "twin.macro";
 
@@ -25,6 +28,21 @@ const Wrapper = styled.div`
     }
     .en_title {
         ${tw`text-12pxr xs:text-13pxr`}
+    }
+    .swiper-button-next {
+        ${tw`absolute top-1/2 -translate-y-1/2 left-8pxr z-10`}
+    }
+    .swiper-button-prev {
+        ${tw`absolute top-1/2 -translate-y-1/2 right-8pxr z-10`}
+    }
+    .swiper-pagination {
+        ${tw`w-full flex justify-center gap-x-8pxr my-6pxr absolute bottom-6pxr z-10`}
+    }
+    .swiper-pagination-bullet {
+        ${tw`inline-block w-8pxr h-8pxr bg-white rounded-full opacity-70`}
+    }
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        ${tw`bg-[#DCAE96]`}
     }
 `;
 const MAN_CONTACT_DATA = {
@@ -79,9 +97,33 @@ const WOMAN_CONTACT_DATA = {
         },
     ],
 };
+const GALLERYIEMS = [
+    { src: Image_1, span: 1 },
+    { src: Image_1, span: 2 },
+    { src: Image_1, span: 1 },
+    { src: Image_1, span: 1 },
+    { src: Image_1, span: 2 },
+    { src: Image_1, span: 2 },
+    { src: Image_1, span: 1 },
+    { src: Image_1, span: 2 },
+    { src: Image_1, span: 1 },
+    { src: Image_1, span: 2 },
+    { src: Image_1, span: 2 },
+    { src: Image_1, span: 1 },
+    // 추가 이미지들
+];
 export default function Home() {
     const [modalState, setModalState] = useState(null);
     const [interviewMore, setInterviewMore] = useState(false);
+    const [activeGallery, setActiveGallery] = useState(null);
+    const handleGalleryItemClick = (index) => {
+        setActiveGallery(index);
+        setModalState("gallery");
+    };
+    const handleModalCloseClick = (state, type) => {
+        setModalState(state);
+        setActiveGallery(state);
+    };
 
     return (
         <Wrapper>
@@ -248,6 +290,25 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+                {/* 갤러리 섹션 */}
+                <div>
+                    <div className="text-center p-[7.34%]">
+                        <div className=" space-y-10pxr ">
+                            <div className="en_title tracking-widest">
+                                GALLERY
+                            </div>
+                            <div className="contents_title pb-30pxr">
+                                새로운 시작의 준비
+                            </div>
+                        </div>
+                    </div>
+                    <div className="mb-[13.34%]">
+                        <GalleryGrid
+                            onGalleryItemClick={handleGalleryItemClick}
+                            data={GALLERYIEMS}
+                        />
+                    </div>
+                </div>
             </div>
             {/* 연락하기 모달 */}
             <ModalBack
@@ -255,7 +316,7 @@ export default function Home() {
                 closeHandle={setModalState}
             >
                 <div
-                    className={`flex flex-col justify-start  items-center max-w-[450px] mx-auto`}
+                    className={`flex flex-col justify-start items-center pt-[10%] xs:pt-[15%] max-w-[450px] w-full`}
                 >
                     <div className="mb-[11.12%] flex flex-col justify-start items-center">
                         <p className="contents_text">CONACT</p>
@@ -267,25 +328,114 @@ export default function Home() {
                     </div>
                 </div>
             </ModalBack>
+            {/* 인터뷰 모달 */}
             <ModalBack
                 action={modalState === "interview"}
                 closeHandle={setModalState}
             >
                 <div
-                    className={`flex flex-col justify-start self-stretch items-center max-w-[450px] mx-auto mb-[7.34%] ${
-                        !interviewMore ? "overflow-hidden" : ""
-                    }`}
+                    className={` w-full max-w-[450px] pb-[7.34%] pt-[10%] xs:pt-[15%]`}
                 >
                     <div className="w-full pb-[11.12%] flex flex-col justify-start items-center">
                         <p className="contents_text">INTERVIEW</p>
                         <p className="contents_title">우리들의 인터뷰</p>
                     </div>
                     <div className=" mx-[4.45%] ">
-                        <div className="py-[4.45%] space-y-[1.78%] border-t border-[#f1f1f1] border-dotted">
-                            <p className="question_title">
-                                Q1. 배우자의 첫인상은 어땠나요 ?
-                            </p>
-                            <p className="question_text px-[1.78%]">
+                        <QuestionBox
+                            title={" Q1. 배우자의 첫인상은 어땠나요 ?"}
+                        >
+                            🤵🏻 신랑 김진호
+                            <br />
+                            <br />
+                            드디어 장가갑니다! 😊 먼저 인생에서 가장 큰 결심을
+                            할 수 있게 해준 예비 신부에게 너무 고맙습니다.
+                            <br />
+                            <br />
+                            가족이라는 단어를 함께 한다는 것은 정말 설레고
+                            아름다운 일이지만 그만큼 책임감을 더 갖고
+                            살아야겠다고 다짐했습니다.
+                            <br />
+                            <br />
+                            <br />
+                            👰🏻&zwj;♀️ 신부 이나은
+                            <br />
+                            <br />
+                            오래된 연인에서 이제는 서로의 부부가 되기로 약속
+                            했습니다!
+                            <br />
+                            <br />
+                            아직은 남자친구라는 말이 더 익숙하지만 그동안 제
+                            옆을 든든하게 지켜주면서 큰 행복을 준,
+                        </QuestionBox>
+                        <QuestionBox
+                            title={" Q1. 배우자의 첫인상은 어땠나요 ?"}
+                        >
+                            🤵🏻 신랑 김진호
+                            <br />
+                            <br />
+                            드디어 장가갑니다! 😊 먼저 인생에서 가장 큰 결심을
+                            할 수 있게 해준 예비 신부에게 너무 고맙습니다.
+                            <br />
+                            <br />
+                            가족이라는 단어를 함께 한다는 것은 정말 설레고
+                            아름다운 일이지만 그만큼 책임감을 더 갖고
+                            살아야겠다고 다짐했습니다.
+                            <br />
+                            <br />
+                            <br />
+                            👰🏻&zwj;♀️ 신부 이나은
+                            <br />
+                            <br />
+                            오래된 연인에서 이제는 서로의 부부가 되기로 약속
+                            했습니다!
+                            <br />
+                            <br />
+                            아직은 남자친구라는 말이 더 익숙하지만 그동안 제
+                            옆을 든든하게 지켜주면서 큰 행복을 준,
+                        </QuestionBox>
+
+                        <QuestionBox
+                            title={" Q1. 배우자의 첫인상은 어땠나요 ?"}
+                        >
+                            🤵🏻 신랑 김진호
+                            <br />
+                            <br />
+                            드디어 장가갑니다! 😊 먼저 인생에서 가장 큰 결심을
+                            할 수 있게 해준 예비 신부에게 너무 고맙습니다.
+                            <br />
+                            <br />
+                            가족이라는 단어를 함께 한다는 것은 정말 설레고
+                            아름다운 일이지만 그만큼 책임감을 더 갖고
+                            살아야겠다고 다짐했습니다.
+                            <br />
+                            <br />
+                            <br />
+                            👰🏻&zwj;♀️ 신부 이나은
+                            <br />
+                            <br />
+                            오래된 연인에서 이제는 서로의 부부가 되기로 약속
+                            했습니다!
+                            <br />
+                            <br />
+                            아직은 남자친구라는 말이 더 익숙하지만 그동안 제
+                            옆을 든든하게 지켜주면서 큰 행복을 준,
+                        </QuestionBox>
+                        {!interviewMore && (
+                            <div className="flex justify-center  pb-[7.34%]">
+                                <button
+                                    className="flex items-center justify-center gap-x-6pxr w-[180px] ss:w-[200px] xs:w-[240px] border border-[#e1e1e1] rounded-10pxr    py-4pxr xs:py-8pxr contents_text"
+                                    onClick={() => {
+                                        setInterviewMore(true);
+                                    }}
+                                >
+                                    <span>더보기</span>
+                                </button>
+                            </div>
+                        )}
+                        {interviewMore && (
+                            <QuestionBox
+                                title={" Q1. 배우자의 첫인상은 어땠나요 ?"}
+                            >
                                 🤵🏻 신랑 김진호
                                 <br />
                                 <br />
@@ -309,82 +459,30 @@ export default function Home() {
                                 <br />
                                 아직은 남자친구라는 말이 더 익숙하지만 그동안 제
                                 옆을 든든하게 지켜주면서 큰 행복을 준,
-                            </p>
-                        </div>
-                        <div className="py-[4.45%] space-y-[1.78%] border-t border-[#f1f1f1] border-dotted">
-                            <p className="question_title">
-                                Q1. 배우자의 첫인상은 어땠나요 ?
-                            </p>
-                            <p className="question_text px-[1.78%]">
-                                🤵🏻 신랑 김진호
-                                <br />
-                                <br />
-                                드디어 장가갑니다! 😊 먼저 인생에서 가장 큰
-                                결심을 할 수 있게 해준 예비 신부에게 너무
-                                고맙습니다.
-                                <br />
-                                <br />
-                                가족이라는 단어를 함께 한다는 것은 정말 설레고
-                                아름다운 일이지만 그만큼 책임감을 더 갖고
-                                살아야겠다고 다짐했습니다.
-                                <br />
-                                <br />
-                                <br />
-                                👰🏻&zwj;♀️ 신부 이나은
-                                <br />
-                                <br />
-                                오래된 연인에서 이제는 서로의 부부가 되기로 약속
-                                했습니다!
-                                <br />
-                                <br />
-                                아직은 남자친구라는 말이 더 익숙하지만 그동안 제
-                                옆을 든든하게 지켜주면서 큰 행복을 준,
-                            </p>
-                        </div>
-                        <div className="py-[4.45%] space-y-[1.78%] border-t border-[#f1f1f1] border-dotted">
-                            <p className="question_title">
-                                Q1. 배우자의 첫인상은 어땠나요 ?
-                            </p>
-                            <p className="question_text px-[1.78%]">
-                                🤵🏻 신랑 김진호
-                                <br />
-                                <br />
-                                드디어 장가갑니다! 😊 먼저 인생에서 가장 큰
-                                결심을 할 수 있게 해준 예비 신부에게 너무
-                                고맙습니다.
-                                <br />
-                                <br />
-                                가족이라는 단어를 함께 한다는 것은 정말 설레고
-                                아름다운 일이지만 그만큼 책임감을 더 갖고
-                                살아야겠다고 다짐했습니다.
-                                <br />
-                                <br />
-                                <br />
-                                👰🏻&zwj;♀️ 신부 이나은
-                                <br />
-                                <br />
-                                오래된 연인에서 이제는 서로의 부부가 되기로 약속
-                                했습니다!
-                                <br />
-                                <br />
-                                아직은 남자친구라는 말이 더 익숙하지만 그동안 제
-                                옆을 든든하게 지켜주면서 큰 행복을 준,
-                            </p>
-                        </div>
+                            </QuestionBox>
+                        )}
                     </div>
                 </div>
-                {!interviewMore && (
-                    <div className="flex justify-center  pb-[7.34%]">
-                        <button
-                            className="flex items-center justify-center gap-x-6pxr w-[180px] ss:w-[200px] xs:w-[240px] border border-[#e1e1e1] rounded-10pxr    py-4pxr xs:py-8pxr contents_text"
-                            onClick={() => {
-                                setInterviewMore(true);
-                            }}
-                        >
-                            <span>더보기</span>
-                        </button>
+            </ModalBack>
+            {/* 갤러리 모달 */}
+            {}
+            <ModalBack
+                action={modalState === "gallery"}
+                type={"gallery"}
+                closeHandle={handleModalCloseClick}
+            >
+                <div className="flex  items-center w-full h-full">
+                    <div
+                        className={`flex justify-center items-center w-full max-w-[450px] mx-auto relative`}
+                    >
+                        {modalState === "gallery" && (
+                            <SwiperSection
+                                data={GALLERYIEMS}
+                                activeIndex={activeGallery}
+                            />
+                        )}
                     </div>
-                )}
+                </div>
             </ModalBack>
         </Wrapper>
     );
