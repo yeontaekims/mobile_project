@@ -5,7 +5,7 @@ const nextConfig = withTwin({
     reactStrictMode: true,
 
     images: {
-        domains: ["images.theirmood.com"],
+        domains: ["images.theirmood.com", "res.cloudinary.com"],
     },
 });
 

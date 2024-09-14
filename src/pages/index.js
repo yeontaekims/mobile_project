@@ -8,11 +8,14 @@ import QuestionBox from "@/components/QuestionBox";
 import GalleryGrid from "@/components/GalleryGrid";
 import SwiperSection from "@/components/SwiperSection";
 import Countdown from "@/components/CountDown";
+import KakaoMap from "@/components/KakaoMap";
+import NavButton from "@/components/NavButton";
 
 import Image_1 from "../images/image_1.jpg";
 import tw, { styled } from "twin.macro";
 
 import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
+import { MapIcon } from "@heroicons/react/24/outline";
 
 const Wrapper = styled.div`
     ${tw`h-[100vh] overflow-scroll`}
@@ -271,7 +274,9 @@ export default function Home() {
                         <div className="px-[7.34%] overflow-hidden">
                             <Image
                                 className={`w-full aspect-[3/2] object-cover rounded-xl duration-500`}
-                                src={Image_1}
+                                src={
+                                    "https://res.cloudinary.com/dqetywuo0/image/upload/v1726322692/image_1_ntrqlf.jpg"
+                                }
                                 alt=""
                                 width={1859}
                                 height={2789}
@@ -406,12 +411,32 @@ export default function Home() {
                         </div>
 
                         <div>
-                            <div>양구 전원 예식장 3F, 김연태 홀</div>
-                            <div>양구읍 정림리 박수근로 19</div>
-                            <div>Tel. 033-444-4444</div>
+                            <div>라비에벨웨딩홀</div>
+                            <div>대전 서구 계백로 1108 라비에벨 웨딩홀</div>
+                            <div>Tel. 042-485-1515</div>
                         </div>
                     </div>
-                    <div className="mb-[13.34%]"></div>
+                    <div className="mb-[13.34%] ">
+                        <div className="relative pb-[71.12%]">
+                            <KakaoMap />
+                        </div>
+                        <div className="flex justify-center  pt-[7.34%]">
+                            <button
+                                className="flex items-center justify-center gap-x-6pxr w-[180px] ss:w-[200px] xs:w-[240px] border border-[#e1e1e1] rounded-10pxr    py-4pxr xs:py-8pxr contents_text"
+                                onClick={() => {
+                                    setModalState("sketch-map");
+                                }}
+                            >
+                                <MapIcon
+                                    className="w-14pxr xs:w-18pxr h-14pxr xs:h-18pxr"
+                                    width={16}
+                                    height={16}
+                                />
+                                <span>약도 보기</span>
+                            </button>
+                        </div>
+                        <div>{/* <NavButton /> */}</div>
+                    </div>
                 </div>
             </div>
             {/* 연락하기 모달 */}
@@ -585,6 +610,25 @@ export default function Home() {
                             />
                         )}
                     </div>
+                </div>
+            </ModalBack>
+            {/* 약도 모달*/}
+            <ModalBack
+                action={modalState === "sketch-map"}
+                closeHandle={handleModalCloseClick}
+                className={"justify-center"}
+            >
+                <div className="w-full max-w-[600px] self-center">
+                    <Image
+                        className={`w-full rounded-xl h-auto`}
+                        src={
+                            "https://res.cloudinary.com/dqetywuo0/image/upload/v1726323960/KakaoTalk_20240914_232501529_c99wil.jpg"
+                        }
+                        alt=""
+                        width={600}
+                        height={600}
+                        layout="responsive"
+                    />
                 </div>
             </ModalBack>
         </Wrapper>

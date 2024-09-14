@@ -20,7 +20,6 @@ export default function Countdown() {
             setHours(Math.floor((difference / (1000 * 60 * 60)) % 24));
             setMinutes(Math.floor((difference / 1000 / 60) % 60));
             setSeconds(Math.floor((difference / 1000) % 60));
-            console.log(Math.floor(difference / (1000 * 60 * 60 * 24)));
         }
     };
 
