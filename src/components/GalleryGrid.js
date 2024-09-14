@@ -34,6 +34,7 @@ const GalleryGrid = ({ onGalleryItemClick, data }) => {
                     <Image
                         src={image.src}
                         alt={`image-${index}`}
+                        className=" cursor-pointer"
                         layout="fill"
                         objectFit="cover"
                     />

@@ -10,7 +10,7 @@ export default function ModalBack({ children, action, closeHandle }) {
             <div></div>
             <div className="flex justify-end p-10pxr xs:p-20pxr absolute top-0 right-0 z-20">
                 <XMarkIcon
-                    className="w-24pxr xs:w-32pxr h-24pxr xs:h-32pxr"
+                    className="w-24pxr xs:w-32pxr h-24pxr xs:h-32pxr cursor-pointer"
                     width={32}
                     height={32}
                     onClick={() => {

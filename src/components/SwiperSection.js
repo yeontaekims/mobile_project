@@ -29,7 +29,10 @@ export default function SwiperSection({ data, activeIndex }) {
             >
                 {data.map((item, index) => {
                     return (
-                        <SwiperSlide key={`slide-${index}`}>
+                        <SwiperSlide
+                            key={`slide-${index}`}
+                            className={"rounded-8pxr overflow-hidden"}
+                        >
                             <Image
                                 src={item.src}
                                 alt={`slide-image-${index}`}

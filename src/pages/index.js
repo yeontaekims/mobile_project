@@ -7,6 +7,8 @@ import Contact from "@/components/Contact";
 import QuestionBox from "@/components/QuestionBox";
 import GalleryGrid from "@/components/GalleryGrid";
 import SwiperSection from "@/components/SwiperSection";
+import Countdown from "@/components/CountDown";
+
 import Image_1 from "../images/image_1.jpg";
 import tw, { styled } from "twin.macro";
 
@@ -15,10 +17,10 @@ import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 const Wrapper = styled.div`
     ${tw`h-[100vh] overflow-scroll`}
     .contents_title {
-        ${tw`text-16pxr xs:text-18pxr`}
+        ${tw`text-16pxr ss:text-18pxr xs:text-20pxr`}
     }
     .contents_text {
-        ${tw`text-12pxr ss:text-14pxr xs:text-16pxr`}
+        ${tw`text-14pxr xs:text-16pxr`}
     }
     .question_title {
         ${tw`text-16pxr xs:text-17pxr `}
@@ -30,19 +32,23 @@ const Wrapper = styled.div`
         ${tw`text-12pxr xs:text-13pxr`}
     }
     .swiper-button-next {
-        ${tw`absolute top-1/2 -translate-y-1/2 left-8pxr z-10`}
+        ${tw`absolute top-1/2 -translate-y-1/2 left-8pxr z-10 cursor-pointer`}
     }
     .swiper-button-prev {
-        ${tw`absolute top-1/2 -translate-y-1/2 right-8pxr z-10`}
+        ${tw`absolute top-1/2 -translate-y-1/2 right-8pxr z-10 cursor-pointer`}
     }
     .swiper-pagination {
         ${tw`w-full flex justify-center gap-x-8pxr my-6pxr absolute bottom-6pxr z-10`}
     }
     .swiper-pagination-bullet {
-        ${tw`inline-block w-8pxr h-8pxr bg-white rounded-full opacity-70`}
+        ${tw`inline-block w-8pxr h-8pxr bg-white rounded-full opacity-70 cursor-pointer`}
     }
     .swiper-pagination-bullet.swiper-pagination-bullet-active {
-        ${tw`bg-[#DCAE96]`}
+        ${tw`bg-[#F57377]`}
+    }
+    .calender table th,
+    .calender table td {
+        ${tw`py-[3.5%] text-center`}
     }
 `;
 const MAN_CONTACT_DATA = {
@@ -309,6 +315,104 @@ export default function Home() {
                         />
                     </div>
                 </div>
+                {/* 달력 섹션 */}
+                <div className="mb-[13.34%]">
+                    <div className="text-center p-[7.34%]">
+                        <div className=" space-y-6pxr border-b ">
+                            <div className="text-18pxr ss:text:20pxr xs:text-24pxr tracking-widest">
+                                2024.11.03
+                            </div>
+                            <div className="contents_title pb-30pxr">
+                                일요일 오전 11시 30분
+                            </div>
+                        </div>
+                    </div>
+                    <div className="calender pb-[7.34%] mx-[10%] border-b">
+                        <table className="w-full">
+                            <thead>
+                                <tr>
+                                    <th className="text-[#e06363]">일</th>
+                                    <th>월</th>
+                                    <th>화</th>
+                                    <th>수</th>
+                                    <th>목</th>
+                                    <th>금</th>
+                                    <th className="text-[#c4eaff]">토</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>1</td>
+                                    <td className="text-[#c4eaff]">2</td>
+                                </tr>
+                                <tr>
+                                    <td className="bg-[#e06363] rounded-full">
+                                        3
+                                    </td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>6</td>
+                                    <td>7</td>
+                                    <td>8</td>
+                                    <td className="text-[#c4eaff]">9</td>
+                                </tr>
+                                <tr>
+                                    <td className="text-[#e06363]">10</td>
+                                    <td>11</td>
+                                    <td>12</td>
+                                    <td>13</td>
+                                    <td>14</td>
+                                    <td>15</td>
+                                    <td className="text-[#c4eaff]">16</td>
+                                </tr>
+                                <tr>
+                                    <td className="text-[#e06363]">17</td>
+                                    <td>18</td>
+                                    <td>19</td>
+                                    <td>20</td>
+                                    <td>21</td>
+                                    <td>22</td>
+                                    <td className="text-[#c4eaff]">23</td>
+                                </tr>
+                                <tr>
+                                    <td className="text-[#e06363]">24</td>
+                                    <td>25</td>
+                                    <td>26</td>
+                                    <td>27</td>
+                                    <td>28</td>
+                                    <td>29</td>
+                                    <td className="text-[#c4eaff]">30</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <Countdown />
+                </div>
+                {/* 오시는길 섹션 */}
+                <div>
+                    <div className="text-center p-[7.34%]">
+                        <div className=" space-y-10pxr ">
+                            <div className="en_title tracking-widest">
+                                LOCATION
+                            </div>
+                            <div className="contents_title pb-30pxr">
+                                오시는 길
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>양구 전원 예식장 3F, 김연태 홀</div>
+                            <div>양구읍 정림리 박수근로 19</div>
+                            <div>Tel. 033-444-4444</div>
+                        </div>
+                    </div>
+                    <div className="mb-[13.34%]"></div>
+                </div>
             </div>
             {/* 연락하기 모달 */}
             <ModalBack
@@ -465,7 +569,6 @@ export default function Home() {
                 </div>
             </ModalBack>
             {/* 갤러리 모달 */}
-            {}
             <ModalBack
                 action={modalState === "gallery"}
                 type={"gallery"}
