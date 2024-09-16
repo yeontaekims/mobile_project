@@ -153,7 +153,7 @@ export default function Home() {
 
                     <div>
                         <Image
-                            className="dark:invert w-full img_cover rounded-t-full"
+                            className="w-full img_cover rounded-t-full"
                             src={Image_1}
                             alt=""
                             width={1859}
@@ -435,7 +435,9 @@ export default function Home() {
                                 <span>약도 보기</span>
                             </button>
                         </div>
-                        <div>{/* <NavButton /> */}</div>
+                        <div>
+                            <NavButton />
+                        </div>
                     </div>
                 </div>
             </div>
